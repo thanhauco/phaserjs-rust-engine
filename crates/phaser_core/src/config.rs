@@ -60,6 +60,10 @@ pub struct Color {
 impl Color {
     pub const BLACK: Color = Color { r: 0, g: 0, b: 0, a: 255 };
     pub const WHITE: Color = Color { r: 255, g: 255, b: 255, a: 255 };
+    pub const RED: Color = Color { r: 255, g: 0, b: 0, a: 255 };
+    pub const GREEN: Color = Color { r: 0, g: 255, b: 0, a: 255 };
+    pub const BLUE: Color = Color { r: 0, g: 0, b: 255, a: 255 };
+    pub const TRANSPARENT: Color = Color { r: 0, g: 0, b: 0, a: 0 };
     
     pub fn new(r: u8, g: u8, b: u8, a: u8) -> Self {
         Self { r, g, b, a }
@@ -67,6 +71,38 @@ impl Color {
     
     pub fn rgb(r: u8, g: u8, b: u8) -> Self {
         Self { r, g, b, a: 255 }
+    }
+    
+    pub fn from_hex(hex: u32) -> Self {
+        Self {
+            r: ((hex >> 16) & 0xFF) as u8,
+            g: ((hex >> 8) & 0xFF) as u8,
+            b: (hex & 0xFF) as u8,
+            a: 255,
+        }
+    }
+    
+    pub fn to_hex(&self) -> u32 {
+        ((self.r as u32) << 16) | ((self.g as u32) << 8) | (self.b as u32)
+    }
+    
+    pub fn to_rgba_f32(&self) -> [f32; 4] {
+        [
+            self.r as f32 / 255.0,
+            self.g as f32 / 255.0,
+            self.b as f32 / 255.0,
+            self.a as f32 / 255.0,
+        ]
+    }
+    
+    pub fn lerp(&self, other: &Color, t: f32) -> Color {
+        let t = t.clamp(0.0, 1.0);
+        Color {
+            r: (self.r as f32 + (other.r as f32 - self.r as f32) * t) as u8,
+            g: (self.g as f32 + (other.g as f32 - self.g as f32) * t) as u8,
+            b: (self.b as f32 + (other.b as f32 - self.b as f32) * t) as u8,
+            a: (self.a as f32 + (other.a as f32 - self.a as f32) * t) as u8,
+        }
     }
 }
 

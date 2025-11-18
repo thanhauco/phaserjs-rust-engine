@@ -11,14 +11,14 @@
   - **Property 3: Core systems initialization completeness**
   - **Validates: Requirements 1.3**
 
-- [ ] 2. Implement core math and utility types
+- [x] 2. Implement core math and utility types
   - Implement Vector2, Vector3, Matrix3, Matrix4 types
   - Implement AABB, Circle, and other geometric primitives
   - Implement Color type with conversion utilities
   - Add math utility functions (lerp, clamp, etc.)
   - _Requirements: 4.1, 4.2, 4.3_
 
-- [ ] 2.1 Write property test for transform matrix operations
+- [x] 2.1 Write property test for transform matrix operations
   - **Property 15: Transform matrix consistency**
   - **Validates: Requirements 4.3**
 
