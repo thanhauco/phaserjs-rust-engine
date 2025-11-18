@@ -5,14 +5,17 @@
 //! - Game loop management
 //! - Event system
 //! - Scene management
+//! - Canvas management
 
+pub mod canvas;
 pub mod config;
 pub mod error;
 pub mod events;
 pub mod game;
 pub mod game_loop;
 
-pub use config::GameConfig;
+pub use canvas::Canvas;
+pub use config::{Color, GameConfig, RendererType};
 pub use error::EngineError;
 pub use game::Game;
 

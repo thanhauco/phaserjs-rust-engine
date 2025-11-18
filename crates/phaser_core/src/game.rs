@@ -1,22 +1,80 @@
 //! Main game instance
 
-use crate::{config::GameConfig, error::EngineError, events::EventEmitter, game_loop::GameLoopState, Result};
+use crate::{
+    canvas::Canvas,
+    config::{GameConfig, RendererType},
+    error::EngineError,
+    events::EventEmitter,
+    game_loop::GameLoopState,
+    Result,
+};
 
 /// Main game instance
 pub struct Game {
     config: GameConfig,
+    canvas: Canvas,
     events: EventEmitter,
     loop_state: GameLoopState,
+    renderer_initialized: bool,
+    systems_initialized: bool,
 }
 
 impl Game {
     /// Create a new game instance with the given configuration
     pub fn new(config: GameConfig) -> Result<Self> {
-        Ok(Self {
+        // Create canvas with configured dimensions and background color
+        let canvas = Canvas::new(config.width, config.height, config.background_color)?;
+        
+        let mut game = Self {
             config,
+            canvas,
             events: EventEmitter::new(),
             loop_state: GameLoopState::new(),
-        })
+            renderer_initialized: false,
+            systems_initialized: false,
+        };
+        
+        // Initialize core systems
+        game.initialize_systems()?;
+        
+        Ok(game)
+    }
+    
+    /// Initialize all core systems
+    fn initialize_systems(&mut self) -> Result<()> {
+        // Initialize renderer based on configuration
+        self.initialize_renderer()?;
+        
+        // Initialize other core systems
+        // - Texture manager
+        // - Cache
+        // - Input
+        // - Sound
+        // - Scene manager
+        self.systems_initialized = true;
+        
+        Ok(())
+    }
+    
+    /// Initialize the renderer
+    fn initialize_renderer(&mut self) -> Result<()> {
+        match self.config.renderer_type {
+            RendererType::WebGL => {
+                // WebGL renderer initialization will go here
+                self.renderer_initialized = true;
+            }
+            RendererType::Canvas => {
+                // Canvas renderer initialization will go here
+                self.renderer_initialized = true;
+            }
+        }
+        
+        Ok(())
+    }
+    
+    /// Check if all systems are initialized
+    pub fn is_initialized(&self) -> bool {
+        self.renderer_initialized && self.systems_initialized
     }
     
     /// Start the game loop
@@ -57,9 +115,24 @@ impl Game {
         &self.config
     }
     
+    /// Get the canvas
+    pub fn canvas(&self) -> &Canvas {
+        &self.canvas
+    }
+    
+    /// Get mutable canvas
+    pub fn canvas_mut(&mut self) -> &mut Canvas {
+        &mut self.canvas
+    }
+    
     /// Get the event emitter
     pub fn events(&mut self) -> &mut EventEmitter {
         &mut self.events
+    }
+    
+    /// Get the renderer type
+    pub fn renderer_type(&self) -> RendererType {
+        self.config.renderer_type
     }
     
     /// Get current time in milliseconds
