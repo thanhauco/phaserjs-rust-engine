@@ -1,0 +1,10 @@
+[package]
+name = "phaser_physics"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+phaser_core = { path = "../phaser_core" }
+phaser_math = { path = "../phaser_math" }

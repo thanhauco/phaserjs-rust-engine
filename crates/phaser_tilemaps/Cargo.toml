@@ -1,0 +1,11 @@
+[package]
+name = "phaser_tilemaps"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+phaser_core = { path = "../phaser_core" }
+phaser_math = { path = "../phaser_math" }
+serde_json.workspace = true

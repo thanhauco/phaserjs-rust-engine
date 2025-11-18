@@ -1,0 +1,15 @@
+[package]
+name = "phaser_renderer"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+phaser_core = { path = "../phaser_core" }
+phaser_math = { path = "../phaser_math" }
+wgpu.workspace = true
+winit.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true

@@ -1,0 +1,61 @@
+[workspace]
+members = [
+    "crates/phaser_core",
+    "crates/phaser_math",
+    "crates/phaser_renderer",
+    "crates/phaser_gameobjects",
+    "crates/phaser_physics",
+    "crates/phaser_input",
+    "crates/phaser_loader",
+    "crates/phaser_audio",
+    "crates/phaser_animations",
+    "crates/phaser_tweens",
+    "crates/phaser_tilemaps",
+    "crates/phaser_particles",
+    "crates/phaser_cameras",
+    "crates/phaser_ai",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Thanh Vu <thanhauco@gmail.com>"]
+license = "MIT"
+
+[workspace.dependencies]
+# Core dependencies
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "1.0"
+anyhow = "1.0"
+
+# Math and graphics
+glam = "0.24"
+image = "0.24"
+
+# Windowing and rendering
+winit = "0.29"
+wgpu = "0.18"
+raw-window-handle = "0.5"
+
+# Async runtime
+tokio = { version = "1.35", features = ["full"] }
+futures = "0.3"
+
+# Testing
+proptest = "1.4"
+
+# AI/ML dependencies
+ndarray = "0.15"
+ort = "1.16"  # ONNX Runtime
+
+# HTTP client for LLM integration
+reqwest = { version = "0.11", features = ["json"] }
+
+[profile.dev]
+opt-level = 1
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1

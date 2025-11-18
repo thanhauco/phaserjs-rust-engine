@@ -1,0 +1,11 @@
+[package]
+name = "phaser_loader"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+phaser_core = { path = "../phaser_core" }
+image.workspace = true
+tokio.workspace = true
