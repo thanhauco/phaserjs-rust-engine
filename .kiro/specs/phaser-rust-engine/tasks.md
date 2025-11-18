@@ -7,7 +7,7 @@
   - Set up CI/CD pipeline configuration
   - _Requirements: 1.1, 1.2, 1.3_
 
-- [ ]* 1.1 Write property test for project setup
+- [ ] 1.1 Write property test for project setup
   - **Property 3: Core systems initialization completeness**
   - **Validates: Requirements 1.3**
 
@@ -18,7 +18,7 @@
   - Add math utility functions (lerp, clamp, etc.)
   - _Requirements: 4.1, 4.2, 4.3_
 
-- [ ]* 2.1 Write property test for transform matrix operations
+- [ ] 2.1 Write property test for transform matrix operations
   - **Property 15: Transform matrix consistency**
   - **Validates: Requirements 4.3**
 
@@ -30,15 +30,15 @@
   - Apply background color on initialization
   - _Requirements: 1.1, 1.2, 1.3, 1.4_
 
-- [ ]* 3.1 Write property test for renderer initialization
+- [ ] 3.1 Write property test for renderer initialization
   - **Property 1: Renderer initialization matches configuration**
   - **Validates: Requirements 1.1**
 
-- [ ]* 3.2 Write property test for canvas dimensions
+- [ ] 3.2 Write property test for canvas dimensions
   - **Property 2: Canvas dimensions match configuration**
   - **Validates: Requirements 1.2**
 
-- [ ]* 3.3 Write property test for background color
+- [ ] 3.3 Write property test for background color
   - **Property 4: Background color application**
   - **Validates: Requirements 1.4**
 
@@ -50,15 +50,15 @@
   - Add destroy/cleanup logic
   - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5_
 
-- [ ]* 4.1 Write property test for delta time calculation
+- [ ] 4.1 Write property test for delta time calculation
   - **Property 7: Delta time calculation**
   - **Validates: Requirements 2.3**
 
-- [ ]* 4.2 Write property test for pause behavior
+- [ ] 4.2 Write property test for pause behavior
   - **Property 8: Pause stops updates**
   - **Validates: Requirements 2.4**
 
-- [ ]* 4.3 Write property test for destroy cleanup
+- [ ] 4.3 Write property test for destroy cleanup
   - **Property 9: Destroy releases resources**
   - **Validates: Requirements 2.5**
 
@@ -70,19 +70,19 @@
   - Add scene pause/resume functionality
   - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.5_
 
-- [ ]* 5.1 Write property test for scene lifecycle ordering
+- [ ] 5.1 Write property test for scene lifecycle ordering
   - **Property 5: Scene lifecycle ordering**
   - **Validates: Requirements 3.2**
 
-- [ ]* 5.2 Write property test for frame update ordering
+- [ ] 5.2 Write property test for frame update ordering
   - **Property 6: Frame update ordering**
   - **Validates: Requirements 2.2**
 
-- [ ]* 5.3 Write property test for scene transitions
+- [ ] 5.3 Write property test for scene transitions
   - **Property 11: Scene transition lifecycle**
   - **Validates: Requirements 3.4**
 
-- [ ]* 5.4 Write property test for multiple scene ordering
+- [ ] 5.4 Write property test for multiple scene ordering
   - **Property 12: Multiple scene ordering**
   - **Validates: Requirements 3.5**
 
@@ -93,15 +93,15 @@
   - Implement getWorldTransformMatrix and getWorldPoint methods
   - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5_
 
-- [ ]* 6.1 Write property test for default transform initialization
+- [ ] 6.1 Write property test for default transform initialization
   - **Property 13: Default transform initialization**
   - **Validates: Requirements 4.1**
 
-- [ ]* 6.2 Write property test for position updates
+- [ ] 6.2 Write property test for position updates
   - **Property 14: Position update reflection**
   - **Validates: Requirements 4.2**
 
-- [ ]* 6.3 Write property test for hierarchical transforms
+- [ ] 6.3 Write property test for hierarchical transforms
   - **Property 16: Hierarchical transform composition**
   - **Validates: Requirements 4.4, 4.5**
 
@@ -121,19 +121,19 @@
   - Add completion detection and cache integration
   - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5_
 
-- [ ]* 8.1 Write property test for asset queueing
+- [ ] 8.1 Write property test for asset queueing
   - **Property 17: Asset queueing**
   - **Validates: Requirements 5.1**
 
-- [ ]* 8.2 Write property test for asset caching
+- [ ] 8.2 Write property test for asset caching
   - **Property 19: Successful asset caching**
   - **Validates: Requirements 5.3**
 
-- [ ]* 8.3 Write property test for load error handling
+- [ ] 8.3 Write property test for load error handling
   - **Property 20: Asset load error handling**
   - **Validates: Requirements 5.4**
 
-- [ ]* 8.4 Write property test for load completion
+- [ ] 8.4 Write property test for load completion
   - **Property 21: Load completion detection**
   - **Validates: Requirements 5.5**
 
@@ -148,11 +148,11 @@
   - Implement game object lifecycle (create, update, destroy)
   - _Requirements: 6.2, 6.5_
 
-- [ ]* 10.1 Write property test for sprite list management
+- [ ] 10.1 Write property test for sprite list management
   - **Property 23: Sprite list management**
   - **Validates: Requirements 6.2**
 
-- [ ]* 10.2 Write property test for sprite cleanup
+- [ ] 10.2 Write property test for sprite cleanup
   - **Property 26: Sprite cleanup**
   - **Validates: Requirements 6.5**
 
@@ -164,15 +164,15 @@
   - Add sprite rendering logic
   - _Requirements: 6.1, 6.3, 6.4_
 
-- [ ]* 11.1 Write property test for sprite creation
+- [ ] 11.1 Write property test for sprite creation
   - **Property 22: Sprite creation from texture**
   - **Validates: Requirements 6.1**
 
-- [ ]* 11.2 Write property test for sprite rendering properties
+- [ ] 11.2 Write property test for sprite rendering properties
   - **Property 24: Sprite rendering properties**
   - **Validates: Requirements 6.3**
 
-- [ ]* 11.3 Write property test for sprite texture updates
+- [ ] 11.3 Write property test for sprite texture updates
   - **Property 25: Sprite texture update**
   - **Validates: Requirements 6.4**
 
@@ -290,15 +290,15 @@
   - Add model quantization support
   - _Requirements: 16.1, 16.2, 16.3, 16.4, 16.5_
 
-- [ ]* 27.1 Write property test for model loading
+- [ ] 27.1 Write property test for model loading
   - **Property 27: Neural network model loading**
   - **Validates: Requirements 16.1**
 
-- [ ]* 27.2 Write property test for inference correctness
+- [ ] 27.2 Write property test for inference correctness
   - **Property 28: Neural network inference correctness**
   - **Validates: Requirements 16.2**
 
-- [ ]* 27.3 Write property test for model quantization
+- [ ] 27.3 Write property test for model quantization
   - **Property 29: Model quantization preserves functionality**
   - **Validates: Requirements 16.4**
 
@@ -310,19 +310,19 @@
   - Add experience buffer for training
   - _Requirements: 17.1, 17.2, 17.3, 17.4, 17.5_
 
-- [ ]* 28.1 Write property test for RL agent initialization
+- [ ] 28.1 Write property test for RL agent initialization
   - **Property 30: RL agent initialization**
   - **Validates: Requirements 17.1**
 
-- [ ]* 28.2 Write property test for state encoding
+- [ ] 28.2 Write property test for state encoding
   - **Property 31: State encoding validity**
   - **Validates: Requirements 17.2**
 
-- [ ]* 28.3 Write property test for action selection
+- [ ] 28.3 Write property test for action selection
   - **Property 32: Action selection validity**
   - **Validates: Requirements 17.3**
 
-- [ ]* 28.4 Write property test for experience collection
+- [ ] 28.4 Write property test for experience collection
   - **Property 33: Experience collection**
   - **Validates: Requirements 17.4**
 
@@ -334,23 +334,23 @@
   - Add generation parameter support
   - _Requirements: 18.1, 18.2, 18.3, 18.4, 18.5_
 
-- [ ]* 29.1 Write property test for LLM connection
+- [ ] 29.1 Write property test for LLM connection
   - **Property 34: LLM provider connection**
   - **Validates: Requirements 18.1**
 
-- [ ]* 29.2 Write property test for LLM prompt-response
+- [ ] 29.2 Write property test for LLM prompt-response
   - **Property 35: LLM prompt-response cycle**
   - **Validates: Requirements 18.2**
 
-- [ ]* 29.3 Write property test for response formatting
+- [ ] 29.3 Write property test for response formatting
   - **Property 36: LLM response formatting**
   - **Validates: Requirements 18.3**
 
-- [ ]* 29.4 Write property test for conversation context
+- [ ] 29.4 Write property test for conversation context
   - **Property 37: LLM conversation context preservation**
   - **Validates: Requirements 18.4**
 
-- [ ]* 29.5 Write property test for generation parameters
+- [ ] 29.5 Write property test for generation parameters
   - **Property 38: LLM generation parameter application**
   - **Validates: Requirements 18.5**
 
@@ -370,19 +370,19 @@
   - Add multi-agent pathfinding optimization
   - _Requirements: 20.1, 20.2, 20.3, 20.4, 20.5_
 
-- [ ]* 31.1 Write property test for navmesh construction
+- [ ] 31.1 Write property test for navmesh construction
   - **Property 39: Navigation mesh graph construction**
   - **Validates: Requirements 20.1**
 
-- [ ]* 31.2 Write property test for pathfinding validity
+- [ ] 31.2 Write property test for pathfinding validity
   - **Property 40: Pathfinding produces valid paths**
   - **Validates: Requirements 20.2**
 
-- [ ]* 31.3 Write property test for dynamic updates
+- [ ] 31.3 Write property test for dynamic updates
   - **Property 41: Dynamic navmesh updates**
   - **Validates: Requirements 20.3**
 
-- [ ]* 31.4 Write property test for ML heuristics
+- [ ] 31.4 Write property test for ML heuristics
   - **Property 42: ML heuristic improves pathfinding**
   - **Validates: Requirements 20.4**
 
