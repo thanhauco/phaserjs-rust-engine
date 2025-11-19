@@ -13,11 +13,15 @@ pub mod error;
 pub mod events;
 pub mod game;
 pub mod game_loop;
+pub mod scene;
+pub mod scene_manager;
 
 pub use canvas::Canvas;
 pub use config::{Color, GameConfig, RendererType};
 pub use error::EngineError;
 pub use game::Game;
+pub use scene::{Scene, SceneData, SceneState};
+pub use scene_manager::SceneManager;
 
 /// Result type for engine operations
 pub type Result<T> = std::result::Result<T, EngineError>;

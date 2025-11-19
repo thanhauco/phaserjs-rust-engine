@@ -6,6 +6,7 @@ use crate::{
     error::EngineError,
     events::EventEmitter,
     game_loop::GameLoopState,
+    scene_manager::SceneManager,
     Result,
 };
 
@@ -15,6 +16,7 @@ pub struct Game {
     canvas: Canvas,
     events: EventEmitter,
     loop_state: GameLoopState,
+    scene_manager: SceneManager,
     renderer_initialized: bool,
     systems_initialized: bool,
 }
@@ -30,6 +32,7 @@ impl Game {
             canvas,
             events: EventEmitter::new(),
             loop_state: GameLoopState::new(),
+            scene_manager: SceneManager::new(),
             renderer_initialized: false,
             systems_initialized: false,
         };
@@ -88,10 +91,13 @@ impl Game {
         self.loop_state.update(time);
         
         if !self.loop_state.paused {
-            // Update logic will go here
+            let delta = self.loop_state.delta;
+            // Update scenes
+            self.scene_manager.update(time, delta);
         }
         
-        // Render logic will go here
+        // Render scenes
+        self.scene_manager.render();
     }
     
     /// Pause the game
@@ -164,6 +170,16 @@ impl Game {
     /// Get the renderer type
     pub fn renderer_type(&self) -> RendererType {
         self.config.renderer_type
+    }
+    
+    /// Get the scene manager
+    pub fn scene_manager(&self) -> &SceneManager {
+        &self.scene_manager
+    }
+    
+    /// Get mutable scene manager
+    pub fn scene_manager_mut(&mut self) -> &mut SceneManager {
+        &mut self.scene_manager
     }
     
     /// Get current time in milliseconds

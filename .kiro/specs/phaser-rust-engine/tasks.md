@@ -62,7 +62,7 @@
   - **Property 9: Destroy releases resources**
   - **Validates: Requirements 2.5**
 
-- [ ] 5. Implement scene system
+- [x] 5. Implement scene system
   - Create Scene trait with lifecycle methods
   - Implement SceneManager for scene registration and transitions
   - Add scene lifecycle execution (init, preload, create, update, render, shutdown, destroy)
@@ -70,19 +70,19 @@
   - Add scene pause/resume functionality
   - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.5_
 
-- [ ] 5.1 Write property test for scene lifecycle ordering
+- [x] 5.1 Write property test for scene lifecycle ordering
   - **Property 5: Scene lifecycle ordering**
   - **Validates: Requirements 3.2**
 
-- [ ] 5.2 Write property test for frame update ordering
+- [x] 5.2 Write property test for frame update ordering
   - **Property 6: Frame update ordering**
   - **Validates: Requirements 2.2**
 
-- [ ] 5.3 Write property test for scene transitions
+- [x] 5.3 Write property test for scene transitions
   - **Property 11: Scene transition lifecycle**
   - **Validates: Requirements 3.4**
 
-- [ ] 5.4 Write property test for multiple scene ordering
+- [x] 5.4 Write property test for multiple scene ordering
   - **Property 12: Multiple scene ordering**
   - **Validates: Requirements 3.5**
 

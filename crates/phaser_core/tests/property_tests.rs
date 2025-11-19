@@ -227,3 +227,63 @@ proptest! {
         prop_assert!(!game.is_running());
     }
 }
+
+
+// **Feature: phaser-rust-engine, Property 5: Scene lifecycle ordering**
+proptest! {
+    #[test]
+    fn test_scene_lifecycle_ordering(
+        _dummy in 0u32..10, // Just to make it a property test
+    ) {
+        use phaser_core::{Scene, SceneData, SceneManager};
+        use std::sync::{Arc, Mutex};
+        
+        #[derive(Clone)]
+        struct TestScene {
+            key: String,
+            call_order: Arc<Mutex<Vec<String>>>,
+        }
+        
+        impl TestScene {
+            fn new(key: &str, call_order: Arc<Mutex<Vec<String>>>) -> Self {
+                Self {
+                    key: key.to_string(),
+                    call_order,
+                }
+            }
+        }
+        
+        impl Scene for TestScene {
+            fn init(&mut self, _data: SceneData) {
+                self.call_order.lock().unwrap().push("init".to_string());
+            }
+            
+            fn preload(&mut self) {
+                self.call_order.lock().unwrap().push("preload".to_string());
+            }
+            
+            fn create(&mut self) {
+                self.call_order.lock().unwrap().push("create".to_string());
+            }
+            
+            fn key(&self) -> &str {
+                &self.key
+            }
+        }
+        
+        let call_order = Arc::new(Mutex::new(Vec::new()));
+        let mut manager = SceneManager::new();
+        let scene = Box::new(TestScene::new("test", call_order.clone()));
+        
+        manager.add("test".to_string(), scene);
+        manager.start("test").unwrap();
+        
+        let order = call_order.lock().unwrap();
+        
+        // Verify lifecycle methods were called in correct order
+        prop_assert_eq!(order.len(), 3);
+        prop_assert_eq!(order[0], "init");
+        prop_assert_eq!(order[1], "preload");
+        prop_assert_eq!(order[2], "create");
+    }
+}
