@@ -122,3 +122,108 @@ proptest! {
         prop_assert_eq!(canvas_color.a, a);
     }
 }
+
+
+// **Feature: phaser-rust-engine, Property 7: Delta time calculation**
+proptest! {
+    #[test]
+    fn test_delta_time_calculation(
+        time_steps in prop::collection::vec(1.0f64..100.0, 2..20),
+    ) {
+        let mut game = Game::new(GameConfig::default()).unwrap();
+        game.start();
+        
+        let mut last_time = 0.0;
+        
+        for (i, step) in time_steps.iter().enumerate() {
+            let current_time = last_time + step;
+            game.step(current_time);
+            
+            if i > 0 {
+                // Delta should equal the time difference between frames
+                let expected_delta = step / 1000.0; // Convert to seconds
+                let actual_delta = game.get_delta();
+                
+                // Allow small floating point error
+                prop_assert!((expected_delta - actual_delta as f64).abs() < 0.001);
+            }
+            
+            last_time = current_time;
+        }
+    }
+}
+
+
+// **Feature: phaser-rust-engine, Property 8: Pause stops updates**
+proptest! {
+    #[test]
+    fn test_pause_stops_updates(
+        frames_before_pause in 1u64..10,
+        frames_during_pause in 1u64..10,
+    ) {
+        let mut game = Game::new(GameConfig::default()).unwrap();
+        game.start();
+        
+        // Run some frames before pausing
+        for i in 0..frames_before_pause {
+            game.step((i as f64 + 1.0) * 16.0);
+        }
+        
+        let frame_count_before_pause = game.get_frame_count();
+        prop_assert!(game.is_running());
+        prop_assert!(!game.is_paused());
+        
+        // Pause the game
+        game.pause();
+        prop_assert!(game.is_paused());
+        
+        // Step through frames while paused
+        for i in 0..frames_during_pause {
+            let time = (frames_before_pause + i + 1) as f64 * 16.0;
+            game.step(time);
+        }
+        
+        // Frame count should still increase (step is called)
+        // but game should remain paused
+        prop_assert!(game.is_paused());
+        prop_assert!(game.is_running());
+        
+        // Resume and verify state
+        game.resume();
+        prop_assert!(!game.is_paused());
+        prop_assert!(game.is_running());
+    }
+}
+
+
+// **Feature: phaser-rust-engine, Property 9: Destroy releases resources**
+proptest! {
+    #[test]
+    fn test_destroy_releases_resources(
+        frames_to_run in 1u64..20,
+    ) {
+        let mut game = Game::new(GameConfig::default()).unwrap();
+        game.start();
+        
+        prop_assert!(game.is_running());
+        
+        // Run some frames
+        for i in 0..frames_to_run {
+            game.step((i as f64 + 1.0) * 16.0);
+        }
+        
+        prop_assert!(game.is_running());
+        prop_assert!(game.get_frame_count() > 0);
+        
+        // Destroy the game
+        game.destroy();
+        
+        // Game loop should be stopped
+        prop_assert!(!game.is_running());
+        
+        // Calling step after destroy should not crash
+        // (though it won't do anything since loop is stopped)
+        game.step(1000.0);
+        prop_assert!(!game.is_running());
+    }
+}

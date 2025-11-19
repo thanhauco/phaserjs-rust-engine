@@ -101,13 +101,44 @@ impl Game {
     
     /// Resume the game
     pub fn resume(&mut self) {
-        self.loop_state.resume();
+        let time = Self::get_time();
+        self.loop_state.resume(time);
     }
     
     /// Destroy the game and release resources
     pub fn destroy(&mut self) {
         self.loop_state.stop();
         // Cleanup logic will go here
+    }
+    
+    /// Get the current FPS
+    pub fn get_fps(&self) -> f32 {
+        self.loop_state.get_fps()
+    }
+    
+    /// Get the delta time in seconds
+    pub fn get_delta(&self) -> f32 {
+        self.loop_state.get_delta_seconds()
+    }
+    
+    /// Check if the game loop is running
+    pub fn is_running(&self) -> bool {
+        self.loop_state.is_running()
+    }
+    
+    /// Check if the game is paused
+    pub fn is_paused(&self) -> bool {
+        self.loop_state.is_paused()
+    }
+    
+    /// Set target FPS
+    pub fn set_target_fps(&mut self, fps: f32) {
+        self.loop_state.set_target_fps(fps);
+    }
+    
+    /// Get frame count
+    pub fn get_frame_count(&self) -> u64 {
+        self.loop_state.frame_count
     }
     
     /// Get the current configuration

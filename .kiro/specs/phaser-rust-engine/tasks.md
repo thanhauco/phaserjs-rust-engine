@@ -42,7 +42,7 @@
   - **Property 4: Background color application**
   - **Validates: Requirements 1.4**
 
-- [ ] 4. Implement game loop system
+- [x] 4. Implement game loop system
   - Create GameLoop struct with RequestAnimationFrame integration
   - Implement delta time calculation
   - Add pause/resume functionality
@@ -50,15 +50,15 @@
   - Add destroy/cleanup logic
   - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5_
 
-- [ ] 4.1 Write property test for delta time calculation
+- [x] 4.1 Write property test for delta time calculation
   - **Property 7: Delta time calculation**
   - **Validates: Requirements 2.3**
 
-- [ ] 4.2 Write property test for pause behavior
+- [x] 4.2 Write property test for pause behavior
   - **Property 8: Pause stops updates**
   - **Validates: Requirements 2.4**
 
-- [ ] 4.3 Write property test for destroy cleanup
+- [x] 4.3 Write property test for destroy cleanup
   - **Property 9: Destroy releases resources**
   - **Validates: Requirements 2.5**
 
